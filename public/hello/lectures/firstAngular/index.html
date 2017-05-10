@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="TodoApp">
+<link>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1> Todo List App</h1>
+
+        <div ng-controller="TodoListController">
+            <input ng-model="todo.title" class="form-control"/>
+
+            <button ng-click="addTodo(todo)" class="btn btn-block btn-primary">Add Todo
+                Add
+            </button>
+
+            {{todos}}
+
+            <ul class="list-group">
+                <li ng-repeat="todo in todos" class="list-group-item">
+                    <span ng-click="removeTodo($index)"
+                          class="pull-right glyphicon glyphicon-remove "></span>
+                    {{todo.title}}
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</body>
+</html>

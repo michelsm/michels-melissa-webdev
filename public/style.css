@@ -1,0 +1,23 @@
+.bg1 {
+    background-color: seashell;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.headerText {
+    text-align: center;
+}
+
+.profilepic {
+    width: 50%;
+    margin: 100px 0px;
+    text-align: center;
+}
+
+#leftside {
+    text-align: center;
+}
+
+.links {
+    margin: 150px 0px;
+}
