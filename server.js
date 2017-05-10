@@ -6,6 +6,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // configure a public directory to host static content
+// stream it verbaten back to the client
 app.use(express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
