@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+    <title>Widget Image</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<nav class="navbar navbar-widget navbar-fixed-top">
+    <div class="container-fluid">
+
+        <a class="navbar-glyph pull-left" href="widget-list.html">
+            <span class="glyph-widget pull-right glyphicon glyphicon-chevron-left glyph-move"></span>
+        </a>
+
+        <label class="navbar-brand">
+            Edit Image Widget
+        </label>
+
+        <a class="navbar-glyph" href="widget-list.html">
+            <span class="glyph-widget pull-right glyphicon glyphicon-ok glyph-move"></span>
+        </a>
+
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+
+    <form>
+        <div class="form-group">
+            <label for="widget-image-name">Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="widget-image-name"
+                   placeholder="Name">
+        </div>
+
+        <div class="form-group">
+            <label for="widget-image-text">Text</label>
+            <input type="text"
+                   class="form-control"
+                   id="widget-image-text"
+                   value="The US Senate Reaches Compromises on Emergency Zika Funding">
+        </div>
+
+        <div class="form-group">
+            <label for="widget-image-url">URL</label>
+            <input type="url"
+                   class="form-control"
+                   id="widget-image-url"
+                   value="http://youtube/uLWLashCXHE">
+        </div>
+
+        <div class="form-group">
+            <label for="widget-image-width">Width</label>
+            <select id="widget-image-width" class="form-control">
+                <option value="125%">125%</option>
+                <option value="100%">100%</option>
+                <option value="75%">75%</option>
+                <option value="50%">50%</option>
+                <option value="25%">25%</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="widget-image-upload">File Upload</label>
+            <input id="widget-image-upload"
+                   multiple
+                   type="file"
+                   class="form-control"/>
+        </div>
+
+    </form>
+
+    <a class="btn btn-primary btn-block"
+       href="widget-list.html">Upload Image</a>
+
+    <a class="btn btn-danger btn-block"
+       href="widget-list.html">Delete</a>
+
+</div>
+
+
+<nav class="navbar navbar-widget navbar-fixed-bottom">
+    <div class="container-fluid ">
+
+        <a class="navbar-glyph" href="../user/profile.html">
+            <span class="glyph-widget glyphicon glyphicon-user pull-right glyph-move"></span>
+        </a>
+
+
+    </div>
+</nav>
+
+
+</body>
+</html>

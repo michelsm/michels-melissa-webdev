@@ -1,7 +1,114 @@
-input.form-control {
+input.form-control,
+textarea.form-control {
     margin-bottom: 5px;
 }
 
 body {
-    padding-top: 36px;
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+
+.navbar-user {
+    background-color: #00008b;
+}
+
+.navbar-user .navbar-brand {
+    color: #ffffff;
+    margin-left: 0;
+}
+
+.navbar-website {
+    background-color: darkmagenta;
+}
+
+.navbar-website .navbar-brand {
+    color: #ffffff;
+    margin-left: 0;
+}
+
+.navbar-page {
+    background-color: darkseagreen;
+}
+
+.navbar-page .navbar-brand {
+    color: #ffffff;
+    margin-left: 0;
+}
+
+.navbar-widget {
+    background-color: lightgrey;
+}
+
+.navbar-widget .navbar-brand {
+    color: #000000;
+    margin-left:0;
+}
+
+
+.list-group-item {
+    border: none;
+}
+
+.navbar-glyph {
+    color: white;
+    top: 15px;
+}
+
+.glyph-move {
+    top: 17px;
+}
+
+@media (min-width: 768px) {
+    .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+        margin-left: 0;
+    }
+}
+
+.website-header {
+    background-color: darkgrey;
+    color: #ffffff;
+}
+
+.website-plus-glyph {
+    padding-right: 12px;
+}
+
+.glyph-widget {
+    color: #000000;
+}
+
+#widget-eye {
+    padding-left: 12px;
+}
+
+.wd-widget {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.wd-toolbar {
+    position: absolute;
+    background-color: white;
+    top: 0px;
+    right: 0px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 10px;
+    opacity: 0.8;
+}
+
+.video-container {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    height:0;
+    overflow:hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
 }

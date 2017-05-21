@@ -12,20 +12,36 @@
     <div class="container">
         <h1> Todo List App</h1>
 
-        <div ng-controller="TodoListController">
+        <div ng-controller="TodoListController" ng-init="">
+
+            <label>Title</label>
             <input ng-model="todo.title" class="form-control"/>
 
-            <button ng-click="addTodo(todo)" class="btn btn-block btn-primary">Add Todo
+            <label>Description</label>
+            <textarea ng-model="todo.details" class="form-control"></textarea>
+
+            <button ng-click="addTodo(todo);todo={}"
+                    class="btn btn-block btn-primary">Add Todo
                 Add
             </button>
 
-            {{todos}}
+            <button ng-click="updateTodo(todo);todo={}"
+                    class="btn btn-block btn-success">Add Todo
+                Update
+            </button>
 
             <ul class="list-group">
                 <li ng-repeat="todo in todos" class="list-group-item">
-                    <span ng-click="removeTodo($index)"
+
+                    <span ng-click="removeTodo(todo)"
                           class="pull-right glyphicon glyphicon-remove "></span>
-                    {{todo.title}}
+
+                    <span ng-click="selectTodo($index)"
+                          class="pull-right glyphicon glyphicon-cog"></span>
+
+                    <h3>{{todo.title}}</h3>
+                    <p>{{todo.details}}</p>
+                    <label>{{todo.date | date}}</label>
 
                 </li>
             </ul>
