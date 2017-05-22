@@ -18,7 +18,7 @@ body {
 }
 
 .navbar-website {
-    background-color: darkmagenta;
+    background-color: #8b008b;
 }
 
 .navbar-website .navbar-brand {
@@ -27,7 +27,7 @@ body {
 }
 
 .navbar-page {
-    background-color: darkseagreen;
+    background-color: #8fbc8f;
 }
 
 .navbar-page .navbar-brand {
@@ -36,7 +36,7 @@ body {
 }
 
 .navbar-widget {
-    background-color: lightgrey;
+    background-color: #d3d3d3;
 }
 
 .navbar-widget .navbar-brand {
@@ -50,7 +50,7 @@ body {
 }
 
 .navbar-glyph {
-    color: white;
+    color: #ffffff;
     top: 15px;
 }
 
@@ -65,7 +65,7 @@ body {
 }
 
 .website-header {
-    background-color: darkgrey;
+    background-color: #a9a9a9;
     color: #ffffff;
 }
 
@@ -88,7 +88,7 @@ body {
 
 .wd-toolbar {
     position: absolute;
-    background-color: white;
+    background-color: #ffffff;
     top: 0px;
     right: 0px;
     padding-left: 5px;

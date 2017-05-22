@@ -1,61 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
-    <title>Login</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
+<form lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no">
+        <title>Login</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../css/style.css" rel="stylesheet"/>
+    </head>
+
+    <nav class="navbar navbar-user navbar-fixed-top">
+        <div class="container-fluid">
+
+            <label class="navbar-brand pull-left">
+                Login
+            </label>
+
+        </div>
+    </nav>
 
 
-<nav class="navbar navbar-user navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container">
 
-        <label class="navbar-brand pull-left">
-            Login
-        </label>
+        <h1>Login</h1>
+        <form>
+            <div>
+                <label for="login-username">Username</label>
 
+                <input id="login-username"
+                       type="text"
+                       class="form-control"
+                       placeholder="Username"/>
+            </div>
+
+            <div>
+                <label for="login-password">Password</label>
+
+                <input id="login-password"
+                       type="password"
+                       class="form-control"
+                       placeholder="Password"/>
+            </div>
+        </form>
+
+        <a class="btn btn-primary btn-block"
+           href="profile.html">Login</a>
+        <a class="btn btn-success btn-block"
+           href="register.html">Register</a>
     </div>
-</nav>
+
+    <nav class="navbar navbar-user navbar-fixed-bottom">
+        <div class="container-fluid ">
 
 
-<div class="container">
-    <h1>Login</h1>
-
-    <label for="login-username">Username</label>
-
-    <input id="login-username"
-           type="text"
-           class="form-control"
-           placeholder="Username"/>
-
-    <label for="login-password">Password</label>
-
-    <input id="login-password"
-           type="password"
-           class="form-control"
-           placeholder="Password"/>
-
-    <a class="btn btn-primary btn-block"
-       href="profile.html">Login</a>
-    <a class="btn btn-success btn-block"
-       href="register.html">Register</a>
-</div>
+            <a class="navbar-glyph" href="../index.html">
+                <span class="glyphicon glyphicon-home pull-right glyph-move"></span>
+            </a>
 
 
-<nav class="navbar navbar-user navbar-fixed-bottom">
-    <div class="container-fluid ">
+        </div>
+    </nav>
 
-
-        <a class="navbar-glyph" href="../index.html">
-            <span class="glyphicon glyphicon-home pull-right glyph-move"></span>
-        </a>
-
-
-    </div>
-</nav>
-
-</body>
-</html>
+    </body>
+    </html>
