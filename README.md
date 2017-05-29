@@ -8,10 +8,11 @@ CS courses include: Database Design, Object Oriented Design, Computer Systems,
 Algorithms, Fundamentals of CS I and II.
 
 The purpose of the 'michels-melissa-webdev' repository is to contain the code
-for my CS4550 Web Development course assignments.
+for my CS capstone course assignments -- CS4550 Web Development.
 
 The following are links to my additional course content:
   - Root to hosted enviornment on Heroku
     --> https://michels-melissa-webdev.herokuapp.com/
   - Link to my project (coming -- will be updated)
-  - Link to my assignment (coming -- will be updated)
+  - Link to my assignment
+    --> https://michels-melissa-webdev.herokuapp.com/assignment/index.html
