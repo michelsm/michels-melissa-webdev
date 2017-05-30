@@ -13,8 +13,10 @@
         model.widgetId = $routeParams['wgid'];
 
         model.widgetEdit = widgetEdit;
+        model.getWidgetTypeFromId = getWidgetTypeFromId;
 
         function init() {
+            model.widgetType = widgetService.getWidgetTypeFromId(model.widgetId);
 
         }
         init();
@@ -25,6 +27,9 @@
 
         }
 
+        function getWidgetTypeFromId(widget) {
+            return widgetService.getWidgetTypeFromId(widget._id);
+        }
 
     }
 })();

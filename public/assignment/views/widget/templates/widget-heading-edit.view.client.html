@@ -1,7 +1,7 @@
 <nav class="navbar navbar-widget navbar-fixed-top">
     <div class="container-fluid">
 
-        <a class="navbar-glyph pull-left" href="widget-list.html">
+        <a class="navbar-glyph pull-left" href="#!/user/{{vm.userId}}/website/{{vm.websiteId}}/page/{{vm.pageId}}/widget">
             <span class="glyph-widget pull-right glyphicon glyphicon-chevron-left glyph-move"></span>
         </a>
 
@@ -50,14 +50,6 @@
 
 </div>
 
-
-<nav class="navbar navbar-widget navbar-fixed-bottom">
-    <div class="container-fluid ">
-
-        <a class="navbar-glyph" href="../user/profile.html">
-            <span class="glyph-widget glyphicon glyphicon-user pull-right glyph-move"></span>
-        </a>
-
-
-    </div>
-</nav>
+<div>
+    <div ng-include="'views/widget/common/widget-footer.view.client.html'"></div>
+</div>

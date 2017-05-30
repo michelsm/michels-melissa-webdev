@@ -20,7 +20,8 @@
 
 
         var api = {
-            findWidgetsForPageId: findWidgetsForPageId
+            findWidgetsForPageId: findWidgetsForPageId,
+            getWidgetTypeFromId: getWidgetTypeFromId
 
         };
         return api;
@@ -34,6 +35,15 @@
                 }
             }
             return resultSet;
+        }
+
+        function getWidgetTypeFromId(widgetId) {
+            for(var w in widgets) {
+                if (widgets[w]._id === widgetId) {
+                    return widgets[w].widgetType;
+                }
+            }
+            return null;
         }
 
     }
