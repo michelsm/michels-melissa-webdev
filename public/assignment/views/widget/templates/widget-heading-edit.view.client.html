@@ -9,7 +9,7 @@
             Edit Header Widget
         </label>
 
-        <a class="navbar-glyph" href="widget-list.html">
+        <a class="navbar-glyph" ng-click="vm.updateWidget(vm.widget)">
             <span class="glyph-widget pull-right glyphicon glyphicon-ok glyph-move"></span>
         </a>
 
@@ -23,30 +23,38 @@
     <form>
         <div class="form-group">
             <label for="widget-heading-name">Name</label>
-            <input type="text" class="form-control" id="widget-heading-name" placeholder="Name">
+            <input type="text"
+                   ng-model="vm.widget.name"
+                   class="form-control"
+                   id="widget-heading-name"
+                   placeholder="Name">
         </div>
 
         <div class="form-group">
             <label for="widget-heading-text">Text</label>
             <input type="text"
+                   ng-model="vm.widget.text"
                    class="form-control"
                    id="widget-heading-text"
-                   value="The US Senate Reaches Compromises on Emergency Zika Funding">
+                   placeholder="Text">
         </div>
 
         <div class="form-group">
             <label for="widget-heading-size">Size</label>
             <input type="number"
+                   ng-model="vm.widget.size"
                    class="form-control"
                    id="widget-heading-size"
-                   value="3">
+                   placeholder="Size">
         </div>
 
     </form>
 
+    <a class="btn btn-info btn-block"
+       ng-click="vm.updateWidget(vm.widget)">Update</a>
 
     <a class="btn btn-danger btn-block"
-       href="widget-list.html">Delete</a>
+       ng-click="vm.deleteWidget()">Delete</a>
 
 </div>
 

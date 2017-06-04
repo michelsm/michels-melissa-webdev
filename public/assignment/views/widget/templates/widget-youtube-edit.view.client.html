@@ -23,6 +23,7 @@
         <div class="form-group">
             <label for="widget-youtube-name">Name</label>
             <input type="text"
+                   ng-model="vm.widget.name"
                    class="form-control"
                    id="widget-youtube-name"
                    placeholder="Name">
@@ -31,6 +32,7 @@
         <div class="form-group">
             <label for="widget-youtube-text">Text</label>
             <input type="text"
+                   ng-model="vm.widget.text"
                    class="form-control"
                    id="widget-youtube-text"
                    value="The US Senate Reaches Compromises on Emergency Zika Funding">
@@ -39,6 +41,7 @@
         <div class="form-group">
             <label for="widget-youtube-url">URL</label>
             <input type="url"
+                   ng-model="vm.widget.url"
                    class="form-control"
                    id="widget-youtube-url"
                    value="http://youtube/uLWLashCXHE">
@@ -46,7 +49,8 @@
 
         <div class="form-group">
             <label for="widget-youtube-width">Width</label>
-            <input type="number"
+            <input type="text"
+                   ng-model="vm.widget.width"
                    class="form-control"
                    id="widget-youtube-width"
                    placeholder="Width">
@@ -56,8 +60,11 @@
     </form>
 
 
+    <a class="btn btn-info btn-block"
+       ng-click="vm.updateWidget(vm.widget)">Update</a>
+
     <a class="btn btn-danger btn-block"
-       href="widget-list.html">Delete</a>
+       ng-click="vm.deleteWidget()">Delete</a>
 
 </div>
 

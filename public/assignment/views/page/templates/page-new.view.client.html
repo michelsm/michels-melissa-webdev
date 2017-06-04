@@ -62,12 +62,12 @@
                 <li ng-repeat="page in vm.pages" class="list-group-item">
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                            <a href="../page/page-list.html">
+                            <a ng-click="vm.listWidgets(page)">
                                 {{page.name}}
                             </a>
                         </div>
                         <div class="col-sm-4 col-xs-4">
-                            <a href="page-edit.html" class="pull-right">
+                            <a href="#!/user/{{vm.userId}}/website/{{vm.websiteId}}/page/{{page._id}}" class="pull-right">
                                 <span class="glyphicon glyphicon-cog pull-right"></span>
                             </a>
                         </div>

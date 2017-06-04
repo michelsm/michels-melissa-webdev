@@ -11,6 +11,7 @@
 
         // event handlers
         model.createPage = createPage;
+        model.listWidgets = listWidgets;
 
         function init() {
             model.pages = pageService.findPagesByWebsiteId(model.websiteId);
@@ -23,6 +24,10 @@
             page.websiteId = model.websiteId;
             pageService.createPage(page);
             $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+        }
+
+        function listWidgets(page) {
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + page._id + '/widget');
         }
     }
 })();

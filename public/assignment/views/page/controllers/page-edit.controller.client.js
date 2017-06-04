@@ -14,6 +14,7 @@
         model.createPage = createPage;
         model.updatePage = updatePage;
         model.deletePage = deletePage;
+        model.listWidgets = listWidgets;
 
         function init() {
             model.pages = pageService.findPagesByWebsiteId(model.websiteId);
@@ -39,6 +40,10 @@
         function deletePage(pageId) {
             pageService.deletePage(pageId);
             $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+        }
+
+        function listWidgets(page) {
+            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page/' + page._id + '/widget');
         }
 
     }

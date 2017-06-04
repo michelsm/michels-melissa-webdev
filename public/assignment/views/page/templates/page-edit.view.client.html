@@ -60,7 +60,7 @@
                 <li ng-repeat="page in vm.pages" class="list-group-item">
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                            <a href="../widget/widget-list.html">
+                            <a ng-click="vm.listWidgets(page)">
                                 {{page.name}}
                             </a>
                         </div>

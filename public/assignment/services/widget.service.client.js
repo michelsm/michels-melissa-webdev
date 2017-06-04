@@ -21,7 +21,11 @@
 
         var api = {
             findWidgetsForPageId: findWidgetsForPageId,
-            getWidgetTypeFromId: getWidgetTypeFromId
+            getWidgetTypeFromId: getWidgetTypeFromId,
+            getWidgetFromId: getWidgetFromId,
+            createWidget: createWidget,
+            updateWidget: updateWidget,
+            deleteWidget: deleteWidget
 
         };
         return api;
@@ -44,6 +48,54 @@
                 }
             }
             return null;
+        }
+
+        function getWidgetFromId(widgetId) {
+            for(var w in widgets) {
+                if (widgets[w]._id === widgetId) {
+                    return widgets[w];
+                }
+            }
+            return null;
+        }
+
+        // creates a widget and adds it to the list of widgets
+        function createWidget(widget) {
+            widgets.push(widget);
+        }
+
+
+        // updates a prexsisting widget based on its type by
+        // updating all of the relevant fields
+        function updateWidget(widget, widgetType) {
+
+            var found = widgets.find(function (given) {
+                return given._id === widget._id;
+            });
+
+            if (widgetType === 'HEADING') {
+                found.name = widget.name;
+                found.text = widget.text;
+                found.size = widget.size;
+
+            } else if (widgetType === 'IMAGE' || widgetType === 'YOUTUBE') {
+                found.name = widget.name;
+                found.url = widget.url;
+                found.text = widget.text;
+                found.width = widget.width;
+            }
+        }
+
+
+        // delete the widget with the corresponding widget id
+        function deleteWidget(widgetId) {
+            var widget = widgets.find(function (widget) {
+                return widget._id === widgetId;
+            });
+
+            var index = widgets.indexOf(widget);
+            // remove at index one element
+            widgets.splice(index, 1);
         }
 
     }

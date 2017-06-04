@@ -23,6 +23,7 @@
         <div class="form-group">
             <label for="widget-image-name">Name</label>
             <input type="text"
+                   ng-model="vm.widget.name"
                    class="form-control"
                    id="widget-image-name"
                    placeholder="Name">
@@ -31,6 +32,7 @@
         <div class="form-group">
             <label for="widget-image-text">Text</label>
             <input type="text"
+                   ng-model="vm.widget.text"
                    class="form-control"
                    id="widget-image-text"
                    value="The US Senate Reaches Compromises on Emergency Zika Funding">
@@ -39,6 +41,7 @@
         <div class="form-group">
             <label for="widget-image-url">URL</label>
             <input type="url"
+                   ng-model="vm.widget.url"
                    class="form-control"
                    id="widget-image-url"
                    value="http://youtube/uLWLashCXHE">
@@ -46,7 +49,7 @@
 
         <div class="form-group">
             <label for="widget-image-width">Width</label>
-            <select id="widget-image-width" class="form-control">
+            <select id="widget-image-width" class="form-control" ng-model="vm.widget.width">
                 <option value="125%">125%</option>
                 <option value="100%">100%</option>
                 <option value="75%">75%</option>
@@ -68,8 +71,11 @@
     <a class="btn btn-primary btn-block"
        href="widget-list.html">Upload Image</a>
 
+    <a class="btn btn-info btn-block"
+       ng-click="vm.updateWidget(vm.widget)">Update</a>
+
     <a class="btn btn-danger btn-block"
-       href="widget-list.html">Delete</a>
+       ng-click="vm.deleteWidget()">Delete</a>
 
 </div>
 
