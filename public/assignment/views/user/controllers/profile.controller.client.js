@@ -9,24 +9,36 @@
         var model = this;
         model.userId = $routeParams['userId'];
 
-        // event handlers
-        model.updateInfo = updateInfo;
-        model.user = userService.findUserById(model.userId);
 
+        // event handlers
+        model.updateUser = updateUser;
+        model.deleteUser = deleteUser;
+
+
+        userService
+            .findUserById(model.userId)
+            .then(renderUser);
+
+
+        function renderUser (user) {
+                model.user = user;
+        }
 
         // implementation of event handlers
-        function updateInfo(username, email, firstName, lastName) {
-            var userId = model.user._id;
-            var userPassword = model.user.password;
-            var updatedUser = {
-                _id: model.userId,
-                username: username,
-                password: userPassword,
-                email: email,
-                firstName: firstName,
-                lastName: lastName
-            };
-            userService.updateUser(model.userId, updatedUser);
+        function updateUser(user) {
+            userService
+                .updateUser(model.userId, user)
+                .then(function() {
+                    model.message = "User updated successfully! :)";
+                });
+        }
+
+        function deleteUser(user) {
+            userService
+                .deleteUser(user._id)
+                .then(function() {
+                    $location.url('/login');
+                });
         }
 
     }

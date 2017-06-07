@@ -22,6 +22,11 @@
         {{vm.alert}}
     </div>
 
+    <div ng-show="vm.message"
+         class="alert alert-info">
+        {{vm.message}}
+    </div>
+
     <form>
 
         <div class="form-group">
@@ -60,10 +65,16 @@
 
     <a href="#!/user/{{vm.userId}}/website"
        class="btn btn-primary btn-block">Websites</a>
+
+    <a ng-click="vm.updateUser(vm.user)"
+       class="btn btn-success btn-block">Update</a>
+
     <a class="btn btn-danger  btn-block"
        href="#!/login">Logout</a>
-    <a ng-click="vm.updateInfo(vm.user.username, vm.user.email, vm.user.firstName, vm.user.lastName)"
-       class="btn btn-success btn-block">Update</a>
+
+    <a ng-click="vm.deleteUser(vm.user)"
+       class="btn btn-warning btn-block">Deactivate Account</a>
+
 </div>
 
 <nav class="navbar navbar-user navbar-fixed-bottom">

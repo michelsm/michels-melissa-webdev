@@ -13,8 +13,14 @@
         model.createPage = createPage;
         model.listWidgets = listWidgets;
 
+
+
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
+            pageService
+                .findAllPagesForWebsite(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
         init();
 
@@ -22,8 +28,11 @@
         // implementation of event handlers
         function createPage(page) {
             page.websiteId = model.websiteId;
-            pageService.createPage(page);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+            pageService
+                .createPage(page)
+                .then(function (page) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page');
+                });
         }
 
         function listWidgets(page) {

@@ -25,6 +25,7 @@
         init();
 
 
+        // implementation of event handlers
         function createWidget(widgetType) {
             model.widgetId = (new Date()).getTime() + "";
             model.widgetType = widgetType;
@@ -35,9 +36,14 @@
                 widgetType:model.widgetType
             };
 
-            widgetService.createWidget(widget);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId
-                + '/page/' + model.pageId + '/widget/' + model.widgetId);
+            widgetService
+                .createWidget(widget)
+                .then(function (widget) {
+                    model.widget = widget;
+                    model.widgetId = model.widget._id;
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId
+                        + '/page/' + model.pageId + '/widget/' + model.widgetId);
+                });
         }
     }
 })();

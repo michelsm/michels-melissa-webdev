@@ -19,20 +19,31 @@
                 return;
             }
 
-            var found = userService.findUserByUsername(username);
 
-            if (found !== null) {
-                model.error = "Username is not available";
-            } else {
+
+            userService
+                .findUserByUsername(username)
+                .then(userTaken)
+                .catch(notFound);
+
+            function userTaken(user) {
+                model.error = "Username unavailable, please try something else.";
+            }
+
+            function notFound(user) {
+
                 var user = {
                     username: username,
                     password: password
                 };
-                userService.createUser(user);
-                $location.url('/user/' + user._id);
+
+                userService
+                    .createUser(user)
+                    .then(function (user) {
+                        $location.url('/user/' + user._id);
+                    });
             }
 
         }
-
     }
 })();

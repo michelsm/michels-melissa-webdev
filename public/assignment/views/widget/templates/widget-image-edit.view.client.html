@@ -58,18 +58,17 @@
             </select>
         </div>
 
-        <div>
-            <label for="widget-image-upload">File Upload</label>
-            <input id="widget-image-upload"
-                   multiple
-                   type="file"
-                   class="form-control"/>
-        </div>
-
     </form>
 
-    <a class="btn btn-primary btn-block"
-       href="widget-list.html">Upload Image</a>
+    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file" class="form-control"/>
+        <input  name="width"     value="{{vm.widget.width}}" style="display: none"/>
+        <input  name="userId"    value="{{vm.userId}}"       style="display: none"/>
+        <input  name="websiteId" value="{{vm.websiteId}}"    style="display: none"/>
+        <input  name="pageId"    value="{{vm.pageId}}"       style="display: none"/>
+        <input  name="widgetId"  value="{{vm.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+    </form>
 
     <a class="btn btn-info btn-block"
        ng-click="vm.updateWidget(vm.widget)">Update</a>

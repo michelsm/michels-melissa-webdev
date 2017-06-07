@@ -9,32 +9,52 @@
         model.userId = $routeParams['userId'];
         model.websiteId = $routeParams['websiteId'];
 
+
+
         // event handlers
         model.updateWebsite = updateWebsite;
         model.deleteWebsite = deleteWebsite;
         model.listPages = listPages;
 
+
+
         function init() {
-            model.websites = websiteService.findAllWebsitesForUser(model.userId);
-            model.website = websiteService.findWebsiteById(model.websiteId);
+            websiteService
+                .findAllWebsitesForUser(model.userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
+
+            websiteService
+                .findWebsiteById(model.websiteId)
+                .then(function (website) {
+                    model.website = website;
+                });
         }
         init();
 
 
-        function updateWebsite(websiteId, website) {
-            websiteService.updateWebsite(websiteId, website);
-            $location.url('/user/' + model.userId + '/website');
 
+        // implementation of event handlers
+        function updateWebsite(websiteId, website) {
+            websiteService
+                .updateWebsite(websiteId, website)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website');
+                });
         }
 
         function deleteWebsite(websiteId) {
-            websiteService.deleteWebsite(websiteId);
-            $location.url('/user/' + model.userId + '/website');
+            websiteService
+                .deleteWebsite(websiteId)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website');
+                });
         }
+
 
         function listPages(website) {
             $location.url('/user/' + model.userId + '/website/' + website._id + '/page');
-
         }
 
     }

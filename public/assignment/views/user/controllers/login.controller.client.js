@@ -9,17 +9,23 @@
         var model = this;
 
 
-        // represents the login function
-        model.login = function(username, password) {
-            var found = userService.findUserByCredentials(username, password);
+        // event handlers
+        model.login = function (username, password) {
 
-            if(found !== null) {
+            userService
+                .findUserByCredentials(username, password)
+                .then(login, handleError);
+
+
+            function login(found) {
                 $location.url('/user/' + found._id);
-            } else {
-                model.message = "Username " + username + " not found, please try again";
+            }
+
+            function handleError() {
+                model.message = "Username " + username + " not found, " +
+                    "or password incorrect. Please try again";
             }
         }
-
 
     }
 })();

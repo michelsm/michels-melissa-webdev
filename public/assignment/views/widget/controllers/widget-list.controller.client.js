@@ -11,16 +11,23 @@
         model.websiteId = $routeParams['wid'];
         model.pageId = $routeParams['pid'];
 
+        // event handlers
         model.trustThisContent = trustThisContent;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         model.getWidgetUrlForType = getWidgetUrlForType;
         model.widgetEdit = widgetEdit;
 
         function init() {
-            model.widgets = widgetService.findWidgetsForPageId(model.pageId);
+            widgetService
+                .findAllWidgetsForPage(model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
         }
         init();
 
+
+        // implementation of event handlers
         function trustThisContent(html) {
             return $sce.trustAsHtml(html);
         }

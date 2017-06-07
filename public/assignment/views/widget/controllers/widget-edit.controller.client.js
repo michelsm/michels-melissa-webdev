@@ -14,14 +14,23 @@
 
         // event handlers
         model.widgetEdit = widgetEdit;
-        model.getWidgetTypeFromId = getWidgetTypeFromId;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
 
 
         function init() {
-            model.widgetType = widgetService.getWidgetTypeFromId(model.widgetId);
-            model.widget = widgetService.getWidgetFromId(model.widgetId);
+            widgetService
+                .findAllWidgetsForPage(model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
+
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then(function (widget) {
+                   model.widget = widget;
+                   model.widgetType = model.widget.widgetType;
+                });
         }
         init();
 
@@ -33,25 +42,23 @@
 
         }
 
-        function getWidgetTypeFromId(widget) {
-            return widgetService.getWidgetTypeFromId(widget._id);
-        }
-
-        function getWidgetFromId(widgetId) {
-            return widgetService.getWidgetFromId(model.widgetId);
-        }
 
         function updateWidget(widget) {
-            widgetService.updateWidget(widget, model.widgetType);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId
-                + '/page/' + model.pageId + '/widget');
+            widgetService
+                .updateWidget(widget, model.widgetId)
+                .then(function (widget) {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId
+                        + '/page/' + model.pageId + '/widget');
+                });
         }
 
         function deleteWidget() {
-            widgetService.deleteWidget(model.widgetId);
-            $location.url('/user/' + model.userId + '/website/' + model.websiteId
-                + '/page/' + model.pageId + '/widget');
-
+            widgetService
+                .deleteWidget(model.widgetId)
+                .then(function () {
+                    $location.url('/user/' + model.userId + '/website/' + model.websiteId
+                        + '/page/' + model.pageId + '/widget');
+                });
         }
 
     }
