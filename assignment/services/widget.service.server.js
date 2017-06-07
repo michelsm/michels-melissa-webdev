@@ -8,6 +8,7 @@ app.get("/api/assignment/widget/:widgetId", findWidgetById);
 app.put("/api/assignment/widget/:widgetId", updateWidget);
 app.delete("/api/assignment/widget/:widgetId", deleteWidget);
 app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
+app.put('/api/assignment/page/:pageId/widget', sortWidget);
 
 
 var widgets = [
@@ -128,4 +129,17 @@ function uploadImage(req, res) {
         websiteId+"/page/"+pageId+"/widget/" + widgetId;
 
     res.redirect(callbackUrl);
+}
+
+
+function sortWidget(req, res) {
+    var pageId = req.params['pageId'];
+    var initial = req.query['initial'];
+    var final = req.query['final'];
+
+    var currWidgets = widgets.filter(function(widget) {
+        return widget['pageId'] === pageId;
+    });
+
+    res.sendStatus(200);
 }
