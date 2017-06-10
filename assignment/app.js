@@ -1,6 +1,9 @@
-console.log('hello from the server!');
+//console.log('hello from the server!');
 
 var app = require('../express');
+var mongoose = require('mongoose');
+mongoose.Promise = require('q').Promise;
+//mongoose.connect('mongodb://localhost/webdev_assignment');
 
 require('./services/user.service.server');
 require('./services/website.service.server');
