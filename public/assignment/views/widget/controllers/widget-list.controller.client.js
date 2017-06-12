@@ -37,7 +37,8 @@
             var youTubeLinkParts = youtubeLink.split('/');
             var id = youTubeLinkParts[youTubeLinkParts.length - 1];
             embedUrl += id;
-            return $sce.trustAsResourceUrl(embedUrl);
+            model.youTubeLink = $sce.trustAsResourceUrl(embedUrl);
+            return model.youTubeLink;
         }
 
         function getWidgetUrlForType(type) {

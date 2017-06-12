@@ -1,5 +1,7 @@
 var app = require('../../express');
 
+var websiteModel = require('../models/website/website.model.server');
+
 
 app.get('/api/assignment/user/:userId/website', findAllWebsitesForUser);
 app.delete('/api/assignment/website/:websiteId', deleteWebsite);
@@ -20,57 +22,59 @@ var websites = [
 
 
 function findAllWebsitesForUser(req, res) {
-    var resultSet = [];
-    for(var w in websites) {
-        if(websites[w].developerId === req.params['userId']) {
-            resultSet.push(websites[w]);
-        }
-    }
-    res.json(resultSet);
+
+    websiteModel
+        .findAllWebsitesForUser(req.params.userId)
+        .then(function (websites) {
+            res.json(websites);
+        });
 }
 
 
 function deleteWebsite(req, res) {
     var websiteId = req.params['websiteId'];
-    for(var w in websites) {
-        if(websiteId === websites[w]._id) {
-            websites.splice(w, 1);
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
-}
 
+    console.log(websiteId);
+
+    websiteModel
+        .deleteWebsite(websiteId)
+        .then(function (status) {
+            res.sendStatus(200);
+        });
+}
 
 
 function findWebsiteById(req, res) {
     var websiteId = req.params['websiteId'];
-    var website = websites.find(function (website) {
-        return website._id === websiteId;
-    });
 
-    res.send(website);
+    websiteModel
+        .findWebsiteById(websiteId)
+        .then(function (website) {
+           res.json(website);
+        });
 }
 
 
 function updateWebsite(req, res) {
     var website = req.body;
     var websiteId = req.params['websiteId'];
-    for (var w in websites) {
-        if(websiteId === websites[w]._id) {
-            websites[w] = website;
+
+    websiteModel
+        .updateWebsite(websiteId, website)
+        .then(function (status) {
             res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+        });
 }
 
 
 function createWebsite(req, res) {
     var website = req.body;
-    website._id = (new Date()).getTime() + "";
-    websites.push(website);
-    res.send(website);
+    var userId = req.params['userId'];
+    website._user = userId;
+
+    websiteModel
+        .createWebsite(website)
+        .then(function (website) {
+            res.json(website);
+        });
 }

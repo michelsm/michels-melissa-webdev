@@ -16,6 +16,7 @@
         model.widgetEdit = widgetEdit;
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
+        model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
 
 
         function init() {
@@ -42,8 +43,24 @@
 
         }
 
+        function getYouTubeEmbedUrl(youtubeLink) {
+            var embedUrl = 'https://youtu.be/';
+            var youTubeLinkParts = youtubeLink.split('=');
+            var id = youTubeLinkParts[youTubeLinkParts.length - 1];
+            embedUrl += id;
+            model.youTubeLink = $sce.trustAsResourceUrl(embedUrl);
+            return model.youTubeLink;
+        }
+
 
         function updateWidget(widget) {
+
+            if (widget.widgetType === 'YOUTUBE') {
+                var newLink = model.getYouTubeEmbedUrl(widget.url) + "";
+                widget.url = newLink;
+                console.log("correct link " + widget.url);
+            }
+
             widgetService
                 .updateWidget(widget, model.widgetId)
                 .then(function (widget) {

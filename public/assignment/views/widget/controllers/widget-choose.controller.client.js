@@ -27,11 +27,11 @@
 
         // implementation of event handlers
         function createWidget(widgetType) {
-            model.widgetId = (new Date()).getTime() + "";
+            //model.widgetId = (new Date()).getTime() + "";
             model.widgetType = widgetType;
 
             var widget = {
-                _id:model.widgetId,
+                //_id:model.widgetId,
                 pageId:model.pageId,
                 widgetType:model.widgetType
             };
