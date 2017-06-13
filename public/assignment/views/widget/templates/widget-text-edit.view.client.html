@@ -1,0 +1,23 @@
+<nav class="navbar navbar-widget navbar-fixed-top">
+    <div class="container-fluid">
+
+        <a class="navbar-glyph pull-left" href="#!/user/{{vm.userId}}/website/{{vm.websiteId}}/page/{{vm.pageId}}/widget">
+            <span class="glyph-widget pull-right glyphicon glyphicon-chevron-left glyph-move"></span>
+        </a>
+
+        <label class="navbar-brand">
+            Text HTML Widget
+        </label>
+
+        <a class="navbar-glyph" ng-click="vm.updateWidget(vm.widget)">
+            <span class="glyph-widget pull-right glyphicon glyphicon-ok glyph-move"></span>
+        </a>
+
+    </div>
+</nav>
+
+
+
+<div>
+    <div ng-include="'views/widget/common/widget-footer.view.client.html'"></div>
+</div>

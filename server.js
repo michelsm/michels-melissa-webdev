@@ -17,4 +17,8 @@ myApp(app);
 
 require('./assignment/app');
 
+//require('./lectures/directives/app.js');
+
+//require('./lectures/directives/app');
+
 app.listen(port);

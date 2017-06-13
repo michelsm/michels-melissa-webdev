@@ -34,10 +34,12 @@ function createWidget(req, res) {
 
     widget._page = pageId;
 
+    console.log("we got to the server");
+
     widgetModel
         .createWidget(widget)
         .then(function (widget) {
-            res.json(widget);
+            res.send(widget);
         });
 }
 
