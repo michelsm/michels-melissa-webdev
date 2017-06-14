@@ -20,16 +20,24 @@
 
 </div>
 
-<div class="container-fluid top-space">
-    <div ng-model="model.widget.text"
+
+<div class="container-fluid">
+    <label for="name">Name</label>
+    <input id="name"
+           placeholder="html"
+           ng-model="vm.widget.name"
+           class="form-control"/>
+
+    <label for="htmlEditor">HTML</label>
+
+    <div ng-model="vm.widget.text"
          text-angular
+         id="htmlEditor"
          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
         ['indent','outdent'],['html']]">
     </div>
-</div>
 
-<div class="container-fluid">
     <div class="btn btn-primary btn-block">
         Update
     </div>

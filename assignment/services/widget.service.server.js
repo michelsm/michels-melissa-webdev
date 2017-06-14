@@ -26,8 +26,6 @@ var widgets = [
 ];
 */
 
-
-
 function createWidget(req, res) {
     var widget = req.body;
     var pageId = req.params.pageId;
