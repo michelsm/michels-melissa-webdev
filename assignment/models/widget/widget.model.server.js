@@ -56,6 +56,13 @@ function updateWidget(widgetId, widget) {
                 width: widget.width
             }
         });
+    } else if (widget.widgetType === 'HTML') {
+        return widgetModel.update({_id: widgetId}, {
+            $set: {
+                name: widget.name,
+                text: widget.text
+            }
+        });
     }
 }
 

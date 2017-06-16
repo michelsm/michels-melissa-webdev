@@ -47,6 +47,7 @@
 
         function updateWidget(widget, widgetId) {
             var url = "/api/assignment/widget/" + widgetId;
+            console.log(widget, widgetId);
             return $http.put(url, widget)
                 .then(function (response) {
                     console.log("back to the client");
