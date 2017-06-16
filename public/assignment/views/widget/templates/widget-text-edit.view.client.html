@@ -17,6 +17,19 @@
 </nav>
 
 
+<div class="container-fluid">
+
+    <label for="text">Text</label>
+    <input id="text" ng-model="vm.widget.text" class="form-control"/>
+    <label for="rows">Rows</label>
+    <input id="rows" ng-model="vm.widget.rows" class="form-control" type="number"/>
+    <label for="placeholder">Placeholder</label>
+    <input id="placeholder" ng-model="vm.widget.placeholder" class="form-control"/>
+    <label for="formatted">Formatted</label>
+    <input id="formatted" ng-model="vm.widget.formatted" type="checkbox"/>
+
+</div>
+
 
 <div>
     <div ng-include="'views/widget/common/widget-footer.view.client.html'"></div>

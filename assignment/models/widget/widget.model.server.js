@@ -19,6 +19,7 @@ module.exports = widgetModel;
 
 
 function createWidget(widget) {
+    console.log("this is the widget in the widget model =");
     console.log(widget);
     return widgetModel.create(widget);
 }
@@ -62,6 +63,15 @@ function updateWidget(widgetId, widget) {
                 name: widget.name,
                 text: widget.text
             }
+        });
+    } else if (widget.widgetType === 'TEXT') {
+        return widgetModel.update({_id: widgetId}, {
+           $set: {
+               text: widget.text,
+               rows: widget.rows,
+               placeholder: widget.placeholder,
+               formatted: widget.formatted
+           }
         });
     }
 }

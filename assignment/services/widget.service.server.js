@@ -37,7 +37,9 @@ function createWidget(req, res) {
     widgetModel
         .createWidget(widget)
         .then(function (widget) {
-            res.send(widget);
+            console.log("the widget being returned from the model");
+            console.log(widget);
+            res.json(widget);
         });
 }
 

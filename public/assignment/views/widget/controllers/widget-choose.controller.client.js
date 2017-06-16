@@ -36,6 +36,8 @@
                 widgetType:model.widgetType
             };
 
+            console.log("this is the text widget =" + model.widget);
+
             widgetService
                 .createWidget(widget)
                 .then(function (widget) {
