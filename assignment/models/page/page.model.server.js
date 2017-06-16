@@ -5,6 +5,7 @@
 var mongoose = require('mongoose');
 var pageSchema = require('./page.schema.server');
 var pageModel  = mongoose.model('PageModel', pageSchema);
+var websiteModel = require('../website/website.model.server');
 
 
 pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
@@ -21,7 +22,11 @@ function findAllPagesForWebsite(websiteId) {
 }
 
 function createPage(page) {
-    return pageModel.create(page);
+    return pageModel
+        .create(page)
+        .then(function (page) {
+           return websiteModel.addToPages(page._website, page._id);
+        });
 }
 
 function findPageById(pageId) {
@@ -29,7 +34,18 @@ function findPageById(pageId) {
 }
 
 function deletePage(pageId) {
-    return pageModel.remove({_id: pageId});
+    return pageModel
+        .findPageById(pageId)
+        .then(function(page) {
+            websiteId = page._website;
+            return pageModel
+                .remove({_id:pageId})
+                .then(function(status) {
+                    return websiteModel
+                        .removeFromPages(websiteId, pageId);
+                });
+        });
+
 }
 
 function updatePage(pageId, page) {

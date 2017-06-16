@@ -6,7 +6,9 @@ var userSchema = mongoose.Schema({
     lastName: String,
     email: String,
     phone: String,
-    // TODO: NEED TO ADD LIST OF WEBSITES
+    _websites: [
+        {type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}
+    ],
     dateCreated: {type: Date, default: Date.now()}
 }, {collection: "user"});
 module.exports = userSchema;
