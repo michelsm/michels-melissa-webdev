@@ -36,12 +36,9 @@
                 widgetType:model.widgetType
             };
 
-            console.log("this is the text widget =" + model.widget);
-
             widgetService
                 .createWidget(widget)
                 .then(function (widget) {
-                    console.log("back to the controller");
                     model.widget = widget;
                     model.widgetId = model.widget._id;
                     $location.url('/user/' + model.userId + '/website/' + model.websiteId

@@ -12,33 +12,16 @@ app.delete("/api/assignment/widget/:widgetId", deleteWidget);
 app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
 app.put('/api/assignment/page/:pageId/widget', sortWidget);
 
-/*
-var widgets = [
-    { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
-    { "_id": "234", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-        "url": "http://lorempixel.com/400/200/"},
-    { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>"},
-    { "_id": "567", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-        "url": "https://youtu.be/AM2Ivdi9c4E" },
-    { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</p>"}
-];
-*/
-
 function createWidget(req, res) {
     var widget = req.body;
     var pageId = req.params.pageId;
 
     widget._page = pageId;
 
-    console.log("we got to the server");
 
     widgetModel
         .createWidget(widget)
         .then(function (widget) {
-            console.log("the widget being returned from the model");
-            console.log(widget);
             res.json(widget);
         });
 }
@@ -70,7 +53,6 @@ function updateWidget(req, res) {
     var widget = req.body;
     var widgetId = req.params['widgetId'];
 
-    console.log(widget.url);
     widgetModel
         .updateWidget(widgetId, widget)
         .then(function (status) {
@@ -110,8 +92,6 @@ function uploadImage(req, res) {
 
     if (widgetId === null) {
 
-        console.log("widget Id is null");
-
         widget = {
             "_id": new Date().getTime() + "",
             "widgetType": "IMAGE",
@@ -147,7 +127,6 @@ function uploadImage(req, res) {
                     .updateWidget(widgetId, widget)
                     .then(function (widget) {
 
-                        console.log(widget.url);
 
                         var callbackUrl = "/assignment/#!/user/"+userId+"/website/"+
                             websiteId+"/page/"+pageId+"/widget/" + widgetId;
@@ -158,16 +137,18 @@ function uploadImage(req, res) {
     }
 }
 
-
-// TO DO --> probably will save for later when I complete sort widgets
 function sortWidget(req, res) {
     var pageId = req.params['pageId'];
     var initial = req.query['initial'];
     var final = req.query['final'];
 
-    var currWidgets = widgets.filter(function(widget) {
-        return widget['pageId'] === pageId;
-    });
+    widgetModel
+        .sortWidget(pageId, initial, final)
+        .then(function(response) {
+            res.sendStatus(200);
+        }, function(error) {
+            res.sendStatus(404);
+        });
 
     res.sendStatus(200);
 }

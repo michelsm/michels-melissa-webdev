@@ -5,7 +5,7 @@
 var mongoose = require('mongoose');
 var widgetSchema = require('./widget.schema.server');
 var widgetModel = mongoose.model('WidgetModel', widgetSchema);
-
+var pageModel = require('../page/page.model.server');
 
 
 widgetModel.createWidget = createWidget;
@@ -13,14 +13,13 @@ widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
 widgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 widgetModel.deleteWidget = deleteWidget;
+widgetModel.sortWidget = sortWidget;
 
 
 module.exports = widgetModel;
 
 
 function createWidget(widget) {
-    console.log("this is the widget in the widget model =");
-    console.log(widget);
     return widgetModel.create(widget);
 }
 
@@ -84,3 +83,12 @@ function deleteWidget(widgetId) {
     return widgetModel.remove({_id: widgetId});
 }
 
+function sortWidget(pageId, initial, end) {
+    return pageModel
+        .findPageById(pageId)
+        .then(function(page) {
+            page._widget.splice(end, 0, page._widget.splice(initial, 1)[0]);
+            page.markModified('_widget');
+            return page.save();
+        });
+}
