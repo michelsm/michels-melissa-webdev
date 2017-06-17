@@ -70,7 +70,7 @@
        class="btn btn-success btn-block">Update</a>
 
     <a class="btn btn-danger  btn-block"
-       href="#!/login">Logout</a>
+       ng-click="vm.logout()">Logout</a>
 
     <a ng-click="vm.deleteUser(vm.user)"
        class="btn btn-warning btn-block">Deactivate Account</a>
@@ -81,8 +81,13 @@
     <div class="container-fluid ">
 
 
-        <a class="navbar-glyph" href="#!/">
+        <a class="navbar-glyph" href="#!/profile">
             <span class="glyphicon glyphicon-user pull-right glyph-move"></span>
+        </a>
+
+        <a class="navbar-glyph"
+           href="#!/">
+            <span class="glyphicon glyphicon-home pull-left glyph-move"></span>
         </a>
 
 

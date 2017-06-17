@@ -13,12 +13,13 @@
         model.login = function (username, password) {
 
             userService
-                .findUserByCredentials(username, password)
+                //.findUserByCredentials(username, password)
+                .login(username, password)
                 .then(login, handleError);
 
 
             function login(found) {
-                $location.url('/user/' + found._id);
+                $location.url('/profile');
             }
 
             function handleError() {

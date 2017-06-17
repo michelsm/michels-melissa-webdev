@@ -9,6 +9,10 @@ var userSchema = mongoose.Schema({
     _websites: [
         {type: mongoose.Schema.Types.ObjectId, ref: "WebsiteModel"}
     ],
+    google: {
+        id:    String,
+        token: String
+    },
     dateCreated: {type: Date, default: Date.now()}
 }, {collection: "user"});
 module.exports = userSchema;
