@@ -21,7 +21,7 @@
             console.log(result);
 
             console.log("in search recipe");
-            $http.get("http://api.yummly.com/v1/api/recipes?_app_id="+ yummlyApiId +"&_app_key=" + yummlyApiKey +"&q=" + result)
+            $http.get("https://api.yummly.com/v1/api/recipes?_app_id="+ yummlyApiId +"&_app_key=" + yummlyApiKey +"&q=" + result)
                 .then(function(response) {
                     console.log(response.data.matches);
                     model.matches = response.data.matches;
