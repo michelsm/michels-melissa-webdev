@@ -27,6 +27,12 @@
 
         // implementation of event handlers
         function createPage(page) {
+
+            if(page.name == undefined || page.name == null) {
+                model.message = "Please enter a page name";
+                return;
+            }
+
             page.websiteId = model.websiteId;
             pageService
                 .createPage(page)

@@ -44,6 +44,11 @@
         }
 
         function updatePage(pageId, page) {
+            if(page.name == undefined || page.name == null) {
+                model.message = "Please enter a page name";
+                return;
+            }
+
             pageService
                 .updatePage(pageId, page)
                 .then(function () {

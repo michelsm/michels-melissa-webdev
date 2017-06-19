@@ -14,6 +14,19 @@
         // implementation of event handlers
         function register(username, password, password2) {
 
+            console.log(password);
+            console.log(password2);
+
+            if (username === undefined || username === null) {
+                model.error = "Please create a username.";
+                return;
+            }
+
+            if (password === undefined || password === null) {
+                model.error = "Please create a password.";
+                return;
+            }
+
             if(password !== password2) {
                 model.error = "Passwords must match";
                 return;

@@ -27,6 +27,12 @@
 
         // implementation of event handlers
         function createWebsite(website) {
+
+            if(website.name == undefined || website.name == null) {
+                model.message = "Please enter a website name";
+                return;
+            }
+
             website.developerId = model.userId;
             websiteService
                 .createWebsite(website)

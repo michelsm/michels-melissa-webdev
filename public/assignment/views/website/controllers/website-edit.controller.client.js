@@ -37,6 +37,14 @@
 
         // implementation of event handlers
         function updateWebsite(websiteId, website) {
+
+            console.log("in");
+
+            if(website.name == undefined || website.name == null) {
+                model.message = "Please enter a website name";
+                return;
+            }
+
             websiteService
                 .updateWebsite(websiteId, website)
                 .then(function () {
