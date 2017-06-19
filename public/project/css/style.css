@@ -1,0 +1,13 @@
+.recipeImage {
+    width: 90px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+}
+
+.recipeName {
+    padding-top: 35px;
+}
+
+.glyphicon {
+    padding-right: 5px;
+}
