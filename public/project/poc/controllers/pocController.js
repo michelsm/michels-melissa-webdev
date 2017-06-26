@@ -13,6 +13,7 @@
         var yummlyApiKey = "b1ab5266438698827f83d4819f6ed365";
         model.searchRecipe = searchRecipe;
         model.showDetails = showDetails;
+        model.getRecipe = getRecipe;
 
         function searchRecipe(searchString) {
 
@@ -39,6 +40,17 @@
             model.recipeName = match.recipeName;
             model.ingredients = match.ingredients;
             model.time = match.totalTimeInSeconds/60;
+        }
+
+        function getRecipe(match) {
+            $http.get("http://api.yummly.com/v1/api/recipe/" + match.id +
+                "?_app_id=" + yummlyApiId + "&_app_key=" + yummlyApiKey)
+                .then(function (response) {
+                    model.recipe = response.data;
+                    model.recipeIngredients = response.data.ingredientLines;
+                    model.recipeUrl = response.data.source.sourceRecipeUrl;
+                    console.log(response.data);
+                })
         }
     }
 })();

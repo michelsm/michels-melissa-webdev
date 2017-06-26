@@ -1,26 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="RecipeApp">
 <head>
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <title>Foodie</title>
+
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- My stylesheet-->
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- Font Awesome stylesheet-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- JQuery -->
+    <script src="../assignment/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assignment/vendor/jquery/dist/jquery-ui.js"></script>
+
+
+    <!--Angular-->
+    <script src="../assignment/vendor/angular/angular.min.js"></script>
+    <script src="../assignment/vendor/angular/angular-route.min.js"></script>
 
 
     <!--app.js-->
     <script src="app.js"></script>
+
+    <!-- Config -->
+    <script src="config.js"></script>
+
+
     <!--Controllers-->
+
+    <!-- poc -->
     <script src="poc/controllers/pocController.js"></script>
+
+    <!-- home -->
+    <script src="views/home/controllers/home.controller.client.js"></script>
+
+    <!-- user -->
+    <script src="views/user/controllers/register.controller.client.js"></script>
+    <script src="views/user/controllers/login.controller.client.js"></script>
+    <script src="views/user/controllers/profile.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+
+    <!-- recipe -->
+    <script src="views/recipe/controllers/recipe-details.controller.client.js"></script>
+
+
+    <!-- explore -->
+    <script src="views/explore/controllers/explore-list.controller.client.js"></script>
+    <script src="views/explore/controllers/explore-details.controller.client.js"></script>
 
 </head>
 
 
-<body ng-app="RecipeApp">
+<body>
 
-<div class="container-fluid" ng-controller="pocController as model">
+<div ng-view></div>
 
-    <h1>Welcome to Melissa's Project Home Page</h1>
-
-
-</div>
 
 </body>
 </html>

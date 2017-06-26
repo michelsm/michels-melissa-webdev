@@ -1,0 +1,93 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+        <div class="navbar-collapse collapse" id="myNav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!/login">Login</a></li>
+                <li><a href="#!/register">Register</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+
+<div class="container-fluid login-container">
+
+    <div class="col-sm-3">
+
+    </div>
+
+    <form>
+        <div class="col-sm-6  register-div">
+            <h1 class="text-center">Login</h1>
+
+            <div ng-show="vm.message"
+                 class="alert alert-danger">
+                {{vm.message}}
+            </div>
+
+            <div>
+                <label for="register-username">Username:</label>
+
+                <input class="form-control"
+                       id="register-username"
+                       placeholder="a.wonderland"
+                       ng-model="vm.user.username"
+                       type="text">
+            </div>
+
+            <div>
+                <label for="register-password">Password:</label>
+
+                <input class="form-control"
+                       id="register-password"
+                       placeholder="*******"
+                       ng-model="vm.user.password"
+                       type="password">
+            </div>
+
+
+            <a ng-click="vm.login(vm.user)"
+               class="btn btn-success btn-block register-btn">
+                Submit
+            </a>
+
+            <a href="/auth/facebook" class="btn btn-primary btn-block">
+                <span class="fa fa-facebook"></span>
+                Facebook
+            </a>
+
+            <a class="btn btn-danger btn-block cancel-btn"
+               href="#!/">
+                Cancel
+            </a>
+
+        </div>
+    </form>
+
+
+    <div class="col-sm-3">
+
+    </div>
+
+</div>
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+        <a class="user-icon" href="#!/">
+            <span class="glyphicon glyphicon-home pull-right"></span>
+        </a>
+    </div>
+</nav>

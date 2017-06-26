@@ -1,0 +1,91 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+        <div class="navbar-collapse collapse" id="myNav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a>Details</a></li>
+                <li><a ng-if="vm.currentUser._id" href="#!/profile">Profile</a></li>
+                <li><a href="#!/">Search</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class=" container-fluid details-header-div">
+    <div class="alert alert-info" ng-show="vm.currentRecipe">
+        <h2>{{vm.currentRecipe.name}}</h2>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="col-xs-8">
+        <div ng-show="vm.currentRecipe">
+
+            <label>Ingredients you'll need:</label>
+
+            <div ng-repeat="ingredient in vm.currentRecipe.ingredientLines">
+                <div class="pull-left">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </div>
+                <div>
+                    {{ingredient}}
+                </div>
+            </div>
+
+            <div>
+                <div class="pull-left">
+                    <span class="glyphicon glyphicon-time"></span>
+                </div>
+
+                <div>
+                    <p>{{vm.currentRecipe.totalTime}}</p>
+                </div>
+
+            </div>
+
+            <div>
+                <label>Instructions can be found at:</label>
+                <div>
+                    {{vm.currentRecipe.source.sourceRecipeUrl}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div col-xs-4>
+
+        <a class="btn btn-warning"
+           ng-click="vm.addToPins(vm.currentRecipe)">Pin!</a>
+
+        <a class="btn btn-danger"
+           ng-if="vm.currentIsInList"
+           ng-click="vm.removeFromPins(vm.userId, vm.currentRecipe)">Remove from Pins</a>
+
+    </div>
+</div>
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+        <a class="user-icon" href="#!/">
+            <span class="glyphicon glyphicon-home pull-left"></span>
+        </a>
+
+        <a class="user-logout" ng-show="vm.currentUser._id">
+            <span ng-click="vm.logout()" class="pull-right">Logout</span>
+        </a>
+
+    </div>
+</nav>

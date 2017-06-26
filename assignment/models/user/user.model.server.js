@@ -26,6 +26,8 @@ function findUserById(userId) {
 
 function findUserByCredentials(username, password) {
     //return userModel.findOne({username: username, password: password});
+    console.log("In assignment server find user by credentials");
+
     return userModel
         .findOne({username: username})
         .then(function(user) {

@@ -1,0 +1,63 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+        <div class="navbar-collapse collapse" id="myNav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!/">Home</a></li>
+                <li><a ng-if="!vm.currentUser._id" href="#!/login">Login</a></li>
+                <li><a ng-if="!vm.currentUser._id" href="#!/register">Register</a></li>
+                <li><a ng-if="vm.currentUser._id" href="#!/profile">Profile</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<div class="container-fluid fixed-background">
+
+    <div class="input-group  searchInput">
+        <input type="text" ng-model="searchBy" class="form-control" placeholder="Search by ingredient, key word or cuisine type">
+        <span class="input-group-btn">
+            <a ng-click="vm.searchBy(searchBy)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </a>
+        </span>
+    </div>
+    <div ng-show="vm.message && !vm.matches" class="alert alert-info no-results">
+        {{vm.message}}
+    </div>
+
+    <div ng-show="vm.matches" class="row searchResults" ng-repeat="match in vm.matches">
+        <div class="col-sm-3"></div>
+        <div class="recipeName col-sm-3 col-xs-4 pull-left" ng-click="vm.showDetails(match)">
+            {{match.recipeName}}
+        </div>
+
+        <div class="recipeImage col-sm-3 col-xs-7" ng-click="vm.showDetails(match)">
+            <img src="{{match.imageUrlsBySize[90]}}">
+        </div>
+        <div class="col-sm-3 col-xs-1 details-and-pin">
+            <a ng-click="vm.addToPins(match)"
+               class="btn btn-warning">Pin!</a>
+            <a href="#!/details/{{match.id}}"
+               class="btn btn-info">Details</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div id="about">
+        <h3>About Foodie :)</h3>
+        <h4>Powered by Yummly</h4>
+    </div>
+</div>

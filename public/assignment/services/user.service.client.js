@@ -41,6 +41,9 @@
 
 
         function findUserByCredentials(username, password) {
+
+            console.log("Inside user.service.client find by credentials");
+
             var url = "/api/assignment/user?username=" + username + "&password=" + password;
             return $http.get(url)
                 .then(function (response) {
@@ -80,6 +83,9 @@
 
 
         function login(username, password) {
+
+            console.log("Inside of user.service.client login");
+
             var url = "/api/assignment/login";
             var credentials = {
                 username: username,
@@ -92,6 +98,9 @@
         }
 
         function checkLoggedIn() {
+
+            console.log("Inside of user.service.client check logged in");
+
             var url = "/api/assignment/checkLoggedIn";
             return $http.get(url)
                 .then(function (response) {

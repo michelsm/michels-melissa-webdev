@@ -77,6 +77,9 @@ app.post   ('/api/assignment/register', register);
 app.get    ('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 
 function localStrategy(username, password, done) {
+
+    console.log("In the local stratedgy");
+
     userModel
         .findUserByCredentials(username, password)
         .then(
@@ -93,6 +96,9 @@ function localStrategy(username, password, done) {
 }
 
 function login(req, res) {
+
+    console.log("inside of service.server login");
+
     var user = req.user;
     res.json(user);
 }
@@ -141,6 +147,8 @@ function findUserById(req, res) {
 function findUserByCredentials(req, res) {
     var username = req.query['username'];
     var password = req.query['password'];
+
+    console.log("In user.service.server findUserByCredentials");
 
     userModel
         .findUserByCredentials(username, password)

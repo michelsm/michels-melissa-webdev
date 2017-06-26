@@ -1,0 +1,180 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+        <div class="navbar-collapse collapse" id="myNav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!/profile">Profile</a></li>
+                <li><a href="#!/">Search</a></li>
+                <li><a href="#!/random">Random</a></li>
+                <li><a href="#!/explore">Explore</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+
+<div class="container-fluid row">
+
+    <div class="col-sm-4">
+        <div class="editProfilePic">
+            <img class="profilePic"
+                 src="http://www.adaptationclearinghouse.org/images/pic.png"
+                 ng-show="!vm.user.profileUrl">
+            <div>
+                <img class="profilePic"
+                     ng-show="vm.user.profileUrl && !vm.user.profileImg"
+                     src="{{vm.user.profileUrl}}">
+
+                <img class="profilePic"
+                     ng-show="vm.user.profileImg"
+                     src="{{vm.user.profileImg}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 settings-edit">
+        <form>
+            <div>
+                <h1 class="text-center">{{vm.user.firstName}}'s Settings</h1>
+
+                <div ng-show="vm.message"
+                     class="alert alert-info">
+                    {{vm.message}}
+                </div>
+
+
+                <div>
+                    <label for="update-firstName">First Name:</label>
+
+                    <input class="form-control"
+                           id="update-firstName"
+                           placeholder="Alice"
+                           ng-model="vm.user.firstName"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-lastName">Last Name:</label>
+
+                    <input class="form-control"
+                           id="update-lastName"
+                           placeholder="Wonderland"
+                           ng-model="vm.user.lastName"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-username">Username:</label>
+
+                    <input class="form-control"
+                           id="update-username"
+                           placeholder="a.wonderland"
+                           ng-model="vm.user.username"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-password">Password:</label>
+
+                    <input class="form-control"
+                           id="update-password"
+                           placeholder="*******"
+                           ng-model="vm.user.password"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-pic">Url to Profile Picture:</label>
+
+                    <input class="form-control"
+                           id="update-pic"
+                           placeholder="www...."
+                           ng-model="vm.user.profileUrl"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-phone">Phone Number:</label>
+
+                    <input class="form-control"
+                           id="update-phone"
+                           placeholder="888-888-888"
+                           ng-model="vm.user.phone"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-email">Email:</label>
+
+                    <input class="form-control"
+                           id="update-email"
+                           placeholder="a.wonderland@gmail.com"
+                           ng-model="vm.user.email"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-covercolor">Cover Color:</label>
+
+                    <select class="form-control"
+                            id="update-covercolor"
+                            ng-model="vm.user.covercolor">
+                        <option value="pink">pink</option>
+                        <option value="black">black</option>
+                        <option value="indianred">red</option>
+                        <option value="lightseagreen">green</option>
+                        <option value="lightblue">blue</option>
+                    </select>
+                </div>
+
+            </div>
+        </form>
+
+        <label for="update-profileImg">Upload Profile Picture:</label>
+
+        <form id="update-profileImg" action="/api/project/upload"   method="post" enctype="multipart/form-data">
+            <input  name="profileImg"    type="file" class="form-control"/>
+            <input  name="userId"     value="{{vm.user._id}}" style="display: none"/>
+            <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+        </form>
+
+        <a ng-click="vm.updateUser(vm.user)"
+           class="btn btn-success btn-block register-btn">
+            Update
+        </a>
+
+        <a class="btn btn-danger btn-block cancel-btn"
+           href="#!/profile">
+            Cancel
+        </a>
+
+        <a class="btn btn-warning btn-block cancel-btn"
+           ng-click="vm.deleteUser(vm.user)">
+            Deactivate Account
+        </a>
+
+    </div>
+</div>
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+        <a class="user-icon" href="#!/">
+            <span class="glyphicon glyphicon-home pull-left"></span>
+        </a>
+
+        <a class="user-logout">
+            <span ng-click="vm.logout()" class="pull-right">Logout</span>
+        </a>
+    </div>
+</nav>

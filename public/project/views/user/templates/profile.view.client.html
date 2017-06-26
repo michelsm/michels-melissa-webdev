@@ -1,0 +1,139 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+        <div class="navbar-collapse collapse" id="myNav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!/profile">Profile</a></li>
+                <li><a href="#!/">Search</a></li>
+                <li><a href="#!/random">Random</a></li>
+                <li><a href="#!/explore">Explore</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid row" style="background-color: {{vm.user.covercolor}}">
+    <div class="block center-div">
+        <img class="profilePic"
+             src="http://www.adaptationclearinghouse.org/images/pic.png"
+             alt ng-show="!vm.user.profileUrl">
+
+        <div>
+            <img class="profilePic"
+                 ng-show="vm.user.profileUrl && !vm.user.profileImg"
+                 src="{{vm.user.profileUrl}}">
+
+            <img class="profilePic"
+                 ng-show="vm.user.profileImg"
+                 src="{{vm.user.profileImg}}">
+        </div>
+
+        <div>
+            <h2 class="firstNameProfile">{{vm.user.firstName}}</h2>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-sm-4 pinned-recipes">
+
+        <h3>Pinned Recipes</h3>
+
+        <a ng-show="!vm.currentUserPins"
+           href="#!/"
+           class="btn btn-success">
+            <span>Start Pinning!</span>
+        </a>
+
+        <div ng-repeat="pin in vm.currentUserPins">
+            <a href="#!/details/{{pin.id}}">
+                <div>
+                    {{pin.name}}
+                </div>
+                <div>
+                    <img src="{{pin.images[0].hostedMediumUrl}}">
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+
+    <div class="col-sm-4 comments">
+
+        <h3>Reviews</h3>
+
+        <div ng-show="vm.reviews">{{vm.reviews}}</div>
+
+        <div ng-show="!vm.reviews" class="btn btn-warning">
+            Review a Recipe!
+        </div>
+
+    </div>
+
+
+    <div class="col-sm-4 friends">
+
+        <h3>Friends</h3>
+
+        <div ng-show="vm.following">
+
+            <div ng-repeat="follower in vm.following">
+                <a href="#!/explore/details/{{follower._id}}">
+                    <div>
+                        {{follower.firstName}}
+                    </div>
+                    <div ng-show="follower.profileUrl">
+                        <img class="smallImg" src="{{follower.profileUrl}}">
+                    </div>
+                    <div ng-show="follower.profileImg">
+                        <img class="smallImg" src="{{follower.profileImg}}">
+                    </div>
+                    <img class="smallImg"
+                         src="http://www.adaptationclearinghouse.org/images/pic.png"
+                         alt ng-show="!follower.profileUrl && !follower.profileImg">
+
+                </a>
+            </div>
+
+        </div>
+
+        <a ng-show="!vm.following"
+           class="btn btn-info"
+           href="#!/explore">
+            <span>Find Friends!</span>
+        </a>
+
+    </div>
+
+</div>
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+
+        <a class="user-icon" href="#!/">
+            <span class="glyphicon glyphicon-home pull-left"></span>
+        </a>
+
+        <a class="user-logout">
+            <span ng-click="vm.logout()" class="pull-right">Logout</span>
+        </a>
+
+        <a class="user-icon" href="#!/editUserSettings">
+            <span class="glyphicon glyphicon-cog pull-right"></span>
+        </a>
+
+    </div>
+</nav>

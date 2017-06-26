@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <title>FoodiePOC</title>
 
     <!--Style Sheets-->
     <link rel="stylesheet" href="../../../assignment/vendor/bootstrap/dist/css/bootstrap.min.css">
@@ -26,7 +26,7 @@
 
 <div class="container-fluid" ng-controller="pocController as vm">
 
-    <h1>Recipe App Poc</h1>
+    <h1>Foodie Poc</h1>
 
     <div class="col-sm-8">
 
@@ -45,12 +45,16 @@
         </div>
 
         <div class="row" ng-repeat="match in vm.matches">
-            <div class="recipeName col-sm-6" ng-click="vm.showDetails(match)">
-                {{match.recipeName}}
+            <div class="recipeName col-xm-5" ng-click="vm.showDetails(match)">
+                <a>{{match.recipeName}}</a>
             </div>
 
-            <div class="recipeImage col-sm-6" ng-click="vm.showDetails(match)">
+            <div class="recipeImage col-xs-5" ng-click="vm.showDetails(match)">
                 <img src="{{match.imageUrlsBySize[90]}}">
+            </div>
+
+            <div class="btn btn-info col-xs-2 pull-right" ng-click="vm.getRecipe(match)">
+                Full Recipe
             </div>
 
         </div>
@@ -59,11 +63,11 @@
 
         <div class="col-sm-4">
 
-            <div class="alert alert-info" ng-show="vm.details">
+            <div class="alert alert-info" ng-show="vm.details && !vm.recipe">
                 <h2>Details</h2>
             </div>
 
-            <div ng-show="vm.details">
+            <div ng-show="vm.details && !vm.recipe">
 
                 <div>
                     <h3>{{vm.recipeName}}</h3>
@@ -88,12 +92,59 @@
                     <div>
                         <p>{{vm.time}}</p>
                     </div>
+
                 </div>
 
             </div>
 
 
         </div>
+
+
+    <div class="col-sm-4">
+
+        <div class="alert alert-info" ng-show="vm.recipe">
+            <h2>Recipe</h2>
+        </div>
+
+        <div ng-show="vm.recipe">
+
+            <div>
+                <h3>{{vm.recipe.name}}</h3>
+            </div>
+
+            <label>Ingredients you'll need:</label>
+
+            <div ng-repeat="ingredient in vm.recipeIngredients">
+                <div class="pull-left">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </div>
+                <div>
+                    {{ingredient}}
+                </div>
+            </div>
+
+            <div>
+                <div class="pull-left">
+                    <span class="glyphicon glyphicon-time"></span>
+                </div>
+
+                <div>
+                    <p>{{vm.recipe.totalTime}}</p>
+                </div>
+
+                <div>
+                    {{vm.recipeUrl}}
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
 
 </div>
 </body>

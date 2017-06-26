@@ -38,15 +38,24 @@ app.get('/api/session/:name/:value', function(req, res) {
 // stream it verbaten back to the client
 app.use(app.express.static(__dirname + '/public'));
 
+
 require ("./test/app.js")(app);
 
+
 var port = process.env.PORT || 3000;
+
 
 var myApp = require('./lectures/app');
 myApp(app);
 
-require('./assignment/app');
 
-//require('./lectures/directives/app');
+// The assignment is commented out because passport is unable to
+// be run in two instances.
+//require('./assignment/app');
+
+
+
+require('./project/app');
+
 
 app.listen(port);
