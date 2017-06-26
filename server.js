@@ -42,11 +42,11 @@ app.use(app.express.static(__dirname + '/public'));
 require ("./test/app.js")(app);
 
 
-var port = process.env.PORT || 3000;
+//var port = process.env.PORT || 3000;
 
 
-var myApp = require('./lectures/app');
-myApp(app);
+//var myApp = require('./lectures/app');
+//myApp(app);
 
 
 // The assignment is commented out because passport is unable to
@@ -58,4 +58,7 @@ myApp(app);
 require('./project/app');
 
 
-app.listen(port);
+//app.listen(port);
+
+
+app.listen(process.env.PORT || 3000);
