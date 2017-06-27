@@ -20,7 +20,10 @@
             addToPins: addToPins,
             removeFromPins: removeFromPins,
             findAllUsersByFirstName: findAllUsersByFirstName,
-            follow: follow
+            follow: follow,
+            checkAdmin: checkAdmin,
+            unregister: unregister,
+            addComment: addComment
         };
         return foodieApi;
 
@@ -113,11 +116,19 @@
 
         function addToPins(userId, match) {
 
-            console.log("got to the user service client");
 
             var url = "/api/project/addToPins/" + userId;
             return $http.put(url, match)
                 .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function addComment(comment) {
+            var url = "/api/project/addComment";
+            return $http.put(url, comment)
+                .then(function (response) {
+                    console.log("back to the client add comment");
                     return response.data;
                 });
         }
@@ -143,6 +154,25 @@
             return $http.put(url, user)
                 .then(function (response) {
                     return response.data;
+                });
+        }
+
+        function checkAdmin() {
+            var url = "/api/project/checkAdmin";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function unregister() {
+            var url = "/api/project/unregister";
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
+                }, function (err) {
+                    console.log(err);
+                    console.log("error in the client");
                 });
         }
     }

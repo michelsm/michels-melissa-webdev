@@ -17,8 +17,13 @@ app.get    ('/api/project/user/:userId', findUserById);
 app.get    ('/api/project/user', findUserByCredentials);
 app.post   ('/api/project/user', createUser);
 app.put    ('/api/project/user/:userId', updateUser);
-app.delete ('/api/project/user/:userId', deleteUser);
+app.delete ('/api/project/user/:userId', isAdmin, deleteUser);
+app.delete ('/api/project/unregister', unregister);
+app.put    ('/api/project/addComment', addComment);
+
+
 app.get    ('/api/project/checkLoggedIn', checkLoggedIn);
+app.get    ('/api/project/checkAdmin', checkAdmin);
 app.post   ('/api/project/logout', logout);
 app.post   ("/api/project/upload", upload.single('profileImg'), uploadImage);
 app.get    ('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
@@ -26,6 +31,7 @@ app.put    ('/api/project/addToPins/:userId', addToPins);
 app.delete ('/api/project/removeFromPins/:userId', removeFromPins);
 app.get    ('/api/project/findUsersByFirstName/:firstName', findAllUsersByFirstName);
 app.put    ('/api/project/follow/:userId', follow);
+app.get    ('/api/project/findAllUsers', isAdmin, findAllUsers);
 
 
 
@@ -113,10 +119,24 @@ function login(req, res) {
     res.json(user);
 }
 
+function addComment(req, res) {
+    var userId = req.user._id;
+    var comment = req.body;
+
+            foodieUserModel
+                .addComment(userId, comment)
+                .then(function (response) {
+                    res.send(200);
+                });
+}
+
+
 function register(req, res) {
     var user = req.body;
 
-    console.log("In register user service server");
+    var array = new Array();
+    array.push("USER");
+    user.roles = array;
 
     foodieUserModel
         .createUser(user)
@@ -146,6 +166,15 @@ function findUserByUsername(req, res) {
 
 function checkLoggedIn(req, res) {
     if (req.isAuthenticated()) {
+        res.json(req.user);
+    } else {
+        res.send('0');
+    }
+}
+
+
+function checkAdmin(req, res) {
+    if (req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
         res.json(req.user);
     } else {
         res.send('0');
@@ -198,6 +227,15 @@ function findUserByCredentials(req, res) {
             }
         }, function (err) {
             res.sendStatus(404);
+        });
+}
+
+function findAllUsers(req, res) {
+
+    foodieUserModel
+        .findAllUsers()
+        .then(function (users) {
+            res.json(users);
         });
 }
 
@@ -314,4 +352,24 @@ function uploadImage(req, res) {
                     );
             }
         );
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
+
+function unregister(req, res) {
+
+    foodieUserModel
+        .deleteUser(req.user._id)
+        .then(function (status) {
+            res.sendStatus(200);
+        }, function (err) {
+            console.log("error in the server");
+        });
 }

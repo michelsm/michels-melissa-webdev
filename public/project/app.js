@@ -1,4 +1,4 @@
 (function () {
     angular
-        .module('RecipeApp', ['ngRoute']);
+        .module('RecipeApp', ['ngRoute', 'textAngular']);
 })();

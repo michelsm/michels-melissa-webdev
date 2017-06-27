@@ -135,3 +135,26 @@
 .smallImg {
     width:50%;
 }
+
+.all-users {
+    padding-top: 75px;
+    padding-bottom: 100px;
+}
+
+.user-allUsers {
+    border: .5px solid black;
+    padding-bottom: 10px;
+}
+
+.create-new-user {
+    padding-top: 75px;
+}
+
+.comment-div {
+    padding-top: 75px;
+}
+
+.yummly {
+    width: 25%;
+    margin-left: 75px;
+}

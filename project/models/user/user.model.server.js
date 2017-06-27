@@ -15,7 +15,9 @@ foodieUserModel.findUserByFacebook = findUserByFacebook;
 foodieUserModel.addToPins = addToPins;
 foodieUserModel.removeFromPins = removeFromPins;
 foodieUserModel.findAllUsersByFirstName = findAllUsersByFirstName;
+foodieUserModel.findAllUsers = findAllUsers;
 foodieUserModel.follow = follow;
+foodieUserModel.addComment = addComment;
 
 module.exports = foodieUserModel;
 
@@ -32,7 +34,6 @@ function findUserByUsername(username) {
 
 function createUser(user) {
 
-    console.log("In create user user model");
     user.password = bcrypt.hashSync(user.password);
     return foodieUserModel.create(user);
 }
@@ -68,14 +69,24 @@ function updateUser(userId,user) {
             profileUrl: user.profileUrl,
             phone: user.phone,
             profileImg: user.profileImg,
-            covercolor: user.covercolor
+            covercolor: user.covercolor,
+            roles: user.roles
         }
     });
 }
 
+function addComment(userId, comment) {
+    return foodieUserModel
+        .findUserById(userId)
+        .then(function (user) {
+            user._reviews.push(comment);
+            return user.save();
+        });
+}
+
+
 function addToPins(userId, match) {
 
-    console.log("got to the user model");
 
     return foodieUserModel
         .findUserById(userId)
@@ -112,4 +123,9 @@ function removeFromPins(userId, match) {
 function findAllUsersByFirstName(firstName) {
 
     return foodieUserModel.findOne({firstName: firstName});
+}
+
+function findAllUsers() {
+
+    return foodieUserModel.find();
 }

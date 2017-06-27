@@ -1,0 +1,53 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid comment-div">
+    <label for="name">Name</label>
+    <input id="name"
+           placeholder="html"
+           ng-model="vm.comment.name"
+           class="form-control"/>
+
+    <label for="htmlEditor">HTML</label>
+
+    <div ng-model="vm.comment.text"
+         text-angular
+         id="htmlEditor"
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
+
+    <a class="btn btn-primary btn-block"
+         ng-click="vm.addComment(vm.comment)">
+        <span>Update</span>
+    </a>
+
+    <a class="btn btn-danger btn-block"
+         href="#!/profile">
+        <span>Cancel</span>
+    </a>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+
+        <a class="user-icon" href="#!/profile">
+            <span class="glyphicon glyphicon-chevron-left pull-left"></span>
+        </a>
+
+
+    </div>
+</nav>

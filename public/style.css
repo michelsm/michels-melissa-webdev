@@ -1,7 +1,7 @@
 .bg1 {
     background-color: seashell;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .headerText {
@@ -14,10 +14,18 @@
     text-align: center;
 }
 
-#leftside {
+#left-side {
     text-align: center;
 }
 
 .links {
     margin: 150px 0px;
+}
+
+.white-text {
+    color: white;
+}
+
+.btn-default {
+    background-color: lightgreen;
 }

@@ -1,0 +1,111 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container create-new-user">
+
+    <form>
+        <div class="register-div">
+            <h1 class="text-center">Create New User</h1>
+
+            <div ng-show="vm.error"
+                 class="alert alert-danger">
+                {{vm.error}}
+            </div>
+
+
+            <div>
+                <label for="register-firstName">First Name:</label>
+
+                <input class="form-control"
+                       id="register-firstName"
+                       placeholder="Alice"
+                       ng-model="vm.newUser.firstName"
+                       type="text">
+            </div>
+
+            <div>
+                <label for="register-lastName">Last Name:</label>
+
+                <input class="form-control"
+                       id="register-lastName"
+                       placeholder="Wonderland"
+                       ng-model="vm.newUser.lastName"
+                       type="text">
+            </div>
+
+            <div>
+                <label for="register-username">Username:</label>
+
+                <input class="form-control"
+                       id="register-username"
+                       placeholder="a.wonderland"
+                       ng-model="vm.newUser.username"
+                       type="text">
+            </div>
+
+            <div>
+                <label for="register-password">Password (Please inform user of temporary password):</label>
+
+                <input class="form-control"
+                       id="register-password"
+                       placeholder="*******"
+                       ng-model="vm.newUser.password"
+                       type="text">
+            </div>
+
+            <div>
+                <label for="register-verify">Verify Password:</label>
+
+                <input class="form-control"
+                       id="register-verify"
+                       placeholder="*******"
+                       ng-model="vm.newUser.verifyPassword"
+                       type="text">
+            </div>
+
+            <label for="register-verify">Access Privileges:</label>
+
+            <select class="form-control"
+                    ng-model="vm.newUser.roles">
+                <option value = "user">USER</option>
+                <option value = "admin">USER and ADMIN</option>
+            </select>
+
+
+            <a ng-click="vm.createUser(vm.newUser)"
+               class="btn btn-success btn-block register-btn">
+                Create
+            </a>
+
+            <a class="btn btn-danger btn-block cancel-btn"
+               href="#!/admin">
+                Cancel
+            </a>
+
+        </div>
+    </form>
+</div>
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+
+        <a class="user-icon" href="#!/admin">
+            <span class="glyphicon glyphicon-chevron-left pull-left"></span>
+        </a>
+
+    </div>
+</nav>

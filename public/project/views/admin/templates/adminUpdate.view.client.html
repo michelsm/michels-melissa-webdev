@@ -1,0 +1,122 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNav">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid row">
+
+    <div class="col-sm-4">
+        <div class="editProfilePic">
+            <img class="profilePic"
+                 src="http://www.adaptationclearinghouse.org/images/pic.png"
+                 ng-show="!vm.navigatedUser.profileUrl && !vm.navigatedUser.profileImg">
+            <div>
+                <img class="profilePic"
+                     ng-show="vm.navigatedUser.profileUrl && !vm.navigatedUser.profileImg"
+                     src="{{vm.navigatedUser.profileUrl}}">
+
+                <img class="profilePic"
+                     ng-show="vm.navigatedUser.profileImg"
+                     src="{{vm.navigatedUser.profileImg}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 settings-edit">
+        <form>
+            <div>
+                <h1 class="text-center">{{vm.navigatedUser.firstName}}'s Settings</h1>
+
+                <div ng-show="vm.message"
+                     class="alert alert-info">
+                    {{vm.message}}
+                </div>
+
+
+                <div>
+                    <label for="update-firstName">First Name:</label>
+
+                    <input class="form-control"
+                           id="update-firstName"
+                           placeholder="Alice"
+                           ng-model="vm.navigatedUser.firstName"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-lastName">Last Name:</label>
+
+                    <input class="form-control"
+                           id="update-lastName"
+                           placeholder="Wonderland"
+                           ng-model="vm.navigatedUser.lastName"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-username">Username:</label>
+
+                    <input class="form-control"
+                           id="update-username"
+                           placeholder="a.wonderland"
+                           ng-model="vm.navigatedUser.username"
+                           type="text">
+                </div>
+
+                <div>
+                    <label for="update-password">Password:</label>
+
+                    <input class="form-control"
+                           id="update-password"
+                           placeholder="*******"
+                           ng-model="vm.navigatedUser.password"
+                           type="text">
+                </div>
+
+                <label>Access Privileges:</label>
+
+                <select class="form-control"
+                        ng-model="vm.navigatedUser.roles">
+                    <option value = "user">USER</option>
+                    <option value = "admin">USER and ADMIN</option>
+                </select>
+
+
+            </div>
+        </form>
+
+
+        <a ng-click="vm.updateUser(vm.navigatedUser)"
+           class="btn btn-success btn-block register-btn">
+            Update
+        </a>
+
+        <a class="btn btn-danger btn-block cancel-btn"
+           href="#!/admin">
+            Cancel
+        </a>
+
+
+    </div>
+</div>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
+    <div class="container-fluid">
+
+        <a class="user-icon" href="#!/admin">
+            <span class="glyphicon glyphicon-chevron-left pull-left"></span>
+        </a>
+
+    </div>
+</nav>

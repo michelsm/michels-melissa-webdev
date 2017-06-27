@@ -11,10 +11,10 @@
         </div>
         <div class="navbar-collapse collapse" id="myNav">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#!/explore">Explore</a></li>
                 <li><a href="#!/profile">Profile</a></li>
                 <li><a href="#!/">Search</a></li>
-                <li><a href="#!/random">Random</a></li>
+                <li class="active"><a href="#!/explore">Explore</a></li>
+                <li ng-if="vm.currentUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

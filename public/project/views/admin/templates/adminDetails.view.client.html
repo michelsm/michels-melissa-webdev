@@ -9,13 +9,6 @@
             </button>
             <a class="navbar-brand" href="#">Foodie <i class="fa fa-spoon fa-5" aria-hidden="true"></i></a>
         </div>
-        <div class="navbar-collapse collapse" id="myNav">
-            <ul class="nav navbar-nav">
-                <li class="active"><a>Follower</a></li>
-                <li><a href="#!/profile">Profile</a></li>
-                <li><a href="#!/">Search</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
     </div>
 </nav>
 
@@ -24,7 +17,7 @@
     <div class="block center-div">
         <img class="profilePic"
              src="http://www.adaptationclearinghouse.org/images/pic.png"
-             alt ng-show="!vm.navigatedUser.profileUrl">
+             alt ng-show="!vm.navigatedUser.profileUrl && !vm.navigatedUser.profileImg">
 
         <div>
             <img class="profilePic"
@@ -119,13 +112,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-bottom user-icon">
     <div class="container-fluid">
 
-        <a class="user-icon" href="#!/">
-            <span class="glyphicon glyphicon-home pull-left"></span>
+        <a class="user-icon" href="#!/admin">
+            <span class="glyphicon glyphicon-chevron-left pull-left"></span>
         </a>
 
-        <a class="user-logout">
-            <span ng-click="vm.logout()" class="pull-right">Logout</span>
-        </a>
 
     </div>
 </nav>

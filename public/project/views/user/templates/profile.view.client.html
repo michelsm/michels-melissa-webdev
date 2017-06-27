@@ -13,8 +13,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#!/profile">Profile</a></li>
                 <li><a href="#!/">Search</a></li>
-                <li><a href="#!/random">Random</a></li>
                 <li><a href="#!/explore">Explore</a></li>
+                <li ng-if="vm.currentUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -24,7 +24,7 @@
     <div class="block center-div">
         <img class="profilePic"
              src="http://www.adaptationclearinghouse.org/images/pic.png"
-             alt ng-show="!vm.user.profileUrl">
+             alt ng-show="!vm.user.profileUrl && !vm.user.profileImg">
 
         <div>
             <img class="profilePic"
@@ -72,10 +72,14 @@
 
         <h3>Reviews</h3>
 
-        <div ng-show="vm.reviews">{{vm.reviews}}</div>
 
-        <div ng-show="!vm.reviews" class="btn btn-warning">
-            Review a Recipe!
+        <a class="btn btn-warning" href="#!/comment">
+            <span>Review a Recipe!</span>
+        </a>
+
+        <div ng-repeat="comment in vm.reviews">
+            <div>{{comment.name}}</div>
+            <div ng-bind-html="vm.trustThisContent(comment.text)">{{comment.text}}</div>
         </div>
 
     </div>

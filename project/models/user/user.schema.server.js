@@ -13,16 +13,23 @@ var foodieUserSchema = mongoose.Schema({
         id:    String,
         token: String
     },
+
+    roles: [{type: String, default:'USER', enum: ['USER', 'ADMIN']}],
+
     _pins: [
         {type: mongoose.Schema.Types.Object}
     ],
+
     _following: [
         {type: mongoose.Schema.Types.Object}
     ],
+
     _reviews: [
         {type: mongoose.Schema.Types.Object}
     ],
-    // need to add recommended recipes
+
+    // need to add comments
+
     dateCreated: {type: Date, default: Date.now()}
 }, {collection: "foodieUser"});
 module.exports = foodieUserSchema;

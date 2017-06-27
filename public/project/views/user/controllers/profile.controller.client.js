@@ -4,18 +4,20 @@
         .controller('profileController', profileController);
 
 
-    function profileController(currentUser, $location, $routeParams, foodieUserService, $http) {
+    function profileController(currentUser, $location, $routeParams, foodieUserService, $http, $sce) {
 
         var model = this;
         model.currentUser = currentUser;
         model.userId = currentUser._id;
         model.user = currentUser;
+        model.addComment = addComment;
 
         // event handlers
         model.updateUser = updateUser;
-        model.deleteUser = deleteUser;
+        model.unregister = unregister;
         model.logout = logout;
         model.removeFromPins = removeFromPins;
+        model.trustThisContent = trustThisContent;
 
 
         function init() {
@@ -54,11 +56,14 @@
                 });
         }
 
-        function deleteUser(user) {
+        function unregister() {
             foodieUserService
-                .deleteUser(user._id)
+                .unregister()
                 .then(function() {
                     $location.url('/login');
+                }, function (err) {
+                    console.log(err);
+                    console.log("error in the controller");
                 });
         }
 
@@ -76,6 +81,20 @@
                 .then(function (response) {
                     window.alert("Removal success");
                 });
+        }
+
+        function addComment(comment) {
+            console.log(comment);
+            foodieUserService
+                .addComment(comment)
+                .then(function (response) {
+                    console.log("back to the controller add comment");
+                   $location.url('/profile');
+                });
+        }
+
+        function trustThisContent(html) {
+            return $sce.trustAsHtml(html);
         }
 
     }

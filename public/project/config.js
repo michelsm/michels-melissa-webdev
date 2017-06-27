@@ -17,6 +17,46 @@
                     currentUser: checkCurrentUser
                 }
             })
+            .when('/comment', {
+                templateUrl: 'views/user/templates/comment.view.client.html',
+                controller: 'profileController',
+                controllerAs: 'vm',
+                resolve: {
+                    currentUser: checkCurrentUser
+                }
+            })
+            .when('/admin', {
+                templateUrl: 'views/admin/templates/admin.view.client.html',
+                controller: 'adminController',
+                controllerAs: 'vm',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+            .when('/adminCreate', {
+                templateUrl: 'views/admin/templates/adminCreate.view.client.html',
+                controller: 'adminController',
+                controllerAs: 'vm',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+            .when('/adminUpdate/:userId', {
+                templateUrl: 'views/admin/templates/adminUpdate.view.client.html',
+                controller: 'adminUpdateController',
+                controllerAs: 'vm',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
+            .when('/adminDetails/:userId', {
+                templateUrl: 'views/admin/templates/adminDetails.view.client.html',
+                controller: 'adminUpdateController',
+                controllerAs: 'vm',
+                resolve: {
+                    currentUser: checkAdmin
+                }
+            })
             .when('/login', {
                 templateUrl: 'views/user/templates/login.view.client.html',
                 controller: 'loginController',
@@ -72,6 +112,21 @@
                     currentUser: checkLoggedIn
                 }
             });
+    }
+
+    function checkAdmin($q, $location, foodieUserService) {
+        var deferred = $q.defer();
+        foodieUserService
+            .checkAdmin()
+            .then(function (currentUser) {
+                if (currentUser === '0') {
+                    deferred.resolve({});
+                    $location.url('/');
+                } else {
+                    deferred.resolve(currentUser);
+                }
+            });
+        return deferred.promise;
     }
 
 

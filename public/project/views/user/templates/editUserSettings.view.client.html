@@ -28,7 +28,7 @@
         <div class="editProfilePic">
             <img class="profilePic"
                  src="http://www.adaptationclearinghouse.org/images/pic.png"
-                 ng-show="!vm.user.profileUrl">
+                 ng-show="!vm.user.profileUrl && !vm.user.profileImg">
             <div>
                 <img class="profilePic"
                      ng-show="vm.user.profileUrl && !vm.user.profileImg"
@@ -158,7 +158,7 @@
         </a>
 
         <a class="btn btn-warning btn-block cancel-btn"
-           ng-click="vm.deleteUser(vm.user)">
+           ng-click="vm.unregister()">
             Deactivate Account
         </a>
 

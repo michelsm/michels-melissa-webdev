@@ -15,6 +15,7 @@
                 <li><a ng-if="!vm.currentUser._id" href="#!/login">Login</a></li>
                 <li><a ng-if="!vm.currentUser._id" href="#!/register">Register</a></li>
                 <li><a ng-if="vm.currentUser._id" href="#!/profile">Profile</a></li>
+                <li ng-if="vm.currentUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -56,8 +57,15 @@
 </div>
 
 <div class="container-fluid">
-    <div id="about">
-        <h3>About Foodie :)</h3>
-        <h4>Powered by Yummly</h4>
+
+    <div class="col-xs-4"></div>
+
+    <div class="col-xs-4" id="about">
+        <h3>Because everyone loves food.</h3>
+        <img class="yummly" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Yummly_logo.png/640px-Yummly_logo.png"></img>
+    </div>
+
+    <div class="col-xs-4">
+
     </div>
 </div>
