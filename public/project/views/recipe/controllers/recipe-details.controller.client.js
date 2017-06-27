@@ -66,7 +66,7 @@
         }
 
         function getRecipe(recipeId) {
-            $http.get("http://api.yummly.com/v1/api/recipe/" + recipeId +
+            $http.get("https://api.yummly.com/v1/api/recipe/" + recipeId +
                 "?_app_id=" + yummlyApiId + "&_app_key=" + yummlyApiKey)
                 .then(function (response) {
                     model.currentRecipe = response.data;

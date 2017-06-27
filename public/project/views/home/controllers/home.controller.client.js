@@ -69,7 +69,7 @@
                     }
                 }
 
-                $http.get("http://api.yummly.com/v1/api/recipe/" + match.id +
+                $http.get("https://api.yummly.com/v1/api/recipe/" + match.id +
                     "?_app_id=" + yummlyApiId + "&_app_key=" + yummlyApiKey)
                     .then(function (response) {
                         console.log("complete logic for addToPins");
