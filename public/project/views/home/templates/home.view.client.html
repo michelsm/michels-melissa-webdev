@@ -15,6 +15,7 @@
                 <li><a ng-if="!vm.currentUser._id" href="#!/login">Login</a></li>
                 <li><a ng-if="!vm.currentUser._id" href="#!/register">Register</a></li>
                 <li><a ng-if="vm.currentUser._id" href="#!/profile">Profile</a></li>
+                <li><a ng-if="vm.currentUser._id" href="#!/explore">Explore</a></li>
                 <li ng-if="vm.currentUser.roles.indexOf('ADMIN') > -1"><a href="#!/admin">Admin</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
